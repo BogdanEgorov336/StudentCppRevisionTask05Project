@@ -40,18 +40,11 @@
 
 int taskX(int h, int a, int b) {
 
-	if (h < 0 || a < 0 || b < 0 || h < b || b > a) {
+	if (a < 0 || b < 0 || h < 0 || h <= b || a <= b) {
 		return 0;
 	}
+	
+	double day = h / (a - b);
 
-	int day = 0;
-	int improved_value_a = a - b;
-
-	while (h > 0) {
-
-		h -= improved_value_a;
-		day++;
-	}
-
-	return day;
+	return day - int(day) > 0 ? day++ : day;
 }
